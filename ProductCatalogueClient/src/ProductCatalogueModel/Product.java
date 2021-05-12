@@ -134,11 +134,8 @@ public class Product {
 		 operationStatus += "<td>" + pr_price + "</td>";
 		 
 	 
-		 operationStatus += "<td><input name='Update_BTN' type='button' value='Update' class='btn btn-secondary'></td>"
-				 + "<td><form method='post' action='product.jsp'>"
-				 + "<input name='Delete_BTN' type='submit' value='Delete' class='btn btn-danger'>"
-				 + "<input name='itemID' type='hidden' value='" + pr_id
-				 + "'>" + "</form></td></tr>";
+		 operationStatus += "<td><input name='Select_BTN' type='button' value='Select' class='Select_BTN btn btn-secondary' data-productid='" + pr_id + "'></td>"
+				 + "<td><input name='Delete_BTN' type='button' value='Delete' class='Delete_BTN btn btn-danger' data-productid='" + pr_id + "'></td></tr>";
 	 }
 	 
 	 mySQLconnection.close();

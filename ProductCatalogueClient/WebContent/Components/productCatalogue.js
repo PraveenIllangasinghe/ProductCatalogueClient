@@ -24,18 +24,81 @@ $(document).on("click", "#add_btn", function(event)
 		return;
 		}
 	
-	/*$.ajax(
+	
+	$.ajax(
 	{
 		url: "ProductAPI",
-		type: "POST",
+		type: 'POST',
 		data: $("#addNewProductForm").serialize(),
 		dataType: "text",
 		complete: function(response, status)
 		{
 			onItemSaveComplete(response.responseText, status);
 		}
-	});*/
+	});
+	
+	
+	// If valid-----------------------
+	 // Generate the card and append
+	var pr = getProductCard($("#pr_code").val().trim(),
+			$("#pr_name").val().trim(),
+			$("#pr_category").val().trim(),
+			$("#pr_seller_id").val().trim(),
+			$("#pr_origin_country").val().trim(),
+			$("#pr_description").val().trim(),
+			$("#pr_price").val().trim());
+	 		$("#colStudents").append(pr);
+
+	 $("#alertSuccess").text("Saved successfully.");
+	 $("#alertSuccess").show();
+
+	 $("#addNewProductForm")[0].reset();
 });
+
+
+$(document).on("click", ".Select_BTN", function(event)
+{
+	$("#hiddenProductID").val($(this).data("productid"));
+	$("#up_pr_code").val($(this).closest("tr").find('td:eq(0)').text());
+	$("#up_pr_name").val($(this).closest("tr").find('td:eq(1)').text());
+	$("#up_pr_category").val($(this).closest("tr").find('td:eq(2)').text());
+	$("#up_pr_seller_id").val($(this).closest("tr").find('td:eq(3)').text());
+	$("#up_pr_origin_country").val($(this).closest("tr").find('td:eq(4)').text());
+	$("#up_pr_description").val($(this).closest("tr").find('td:eq(5)').text());
+	$("#up_pr_price").val($(this).closest("tr").find('td:eq(6)').text());
+});
+
+
+$(document).on("click", "#update_btn", function(event)
+{
+	$("#up_alertSuccess").text("");
+	$("#up_alertSuccess").hide();
+	$("#up_alertError").text("");
+	$("#up_alertError").hide();
+			
+	/*var status = validateInfo();
+			
+	if (status != true)
+	{
+		$("#up_alertError").text(status);
+		$("#up_alertError").show();
+		return;
+	}*/
+			
+			
+	$.ajax(
+	{
+		url: "ProductAPI",
+		type: 'PUT',
+		data: $("#updateProductForm").serialize(),
+		dataType: "text",
+		complete: function(response, status)
+			{
+				onItemSaveComplete(response.responseText, status);
+			}
+	});
+});
+
 
 
 //validations
@@ -112,6 +175,21 @@ if (status == "success")
  		$("#alertError").text("Unknown error while saving..");
  		$("#alertError").show();
  	} 
-	//$("#hidItemIDSave").val("");
-	//$("#formItem")[0].reset();
+	//$("#hiddenProductID").val("");
+	//$("#addNewProductForm")[0].reset();
 	}
+
+function getProductCard(code, name, category, sellerId, country, description, price)
+{
+	
+	var prod = "";
+	prod += "<div class=\"product card bg-light m-2\" style=\"max-width: 10rem; float: left;\">";
+	prod += "<div class=\"card-body\">";
+	prod += code + " " + name + ",";
+	prod += "<br>";
+	prod += price + " .00";
+	prod += "</div>";
+	prod += "<input type=\"button\" value=\"Remove\" class=\"btn btn-danger remove\">";
+	prod += "</div>";
+ 	return prod;
+}

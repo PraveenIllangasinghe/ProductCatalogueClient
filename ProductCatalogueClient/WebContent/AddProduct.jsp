@@ -1,3 +1,4 @@
+<%@page import="ProductCatalogueModel.Product"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,7 +20,7 @@
 			
 				<h1 class="m-3">Add Product Details</h1>
 				
-				<form method="POST" action="ProductAPI" id="addNewProductForm" name="addNewProductForm">
+				<form id="addNewProductForm" name="addNewProductForm">
 				
 					<div class="input-group input-group-sm mb-3">
 						<div class="input-group-prepend">
@@ -73,13 +74,22 @@
 					<div id="alertSuccess" class="alert alert-success"></div>
  					<div id="alertError" class="alert alert-danger"></div>
  					
-					<input type="submit" id="add_btn" value="Add" class="btn btn-primary">
+					<input type="button" id="add_btn" value="Add" class="btn btn-primary">
 				
 				</form>
 			
 			</div>
 		
 		</div>
+		
+		<br>
+
+		<div class="row">
+			<div class="col-12" id="colStudents">
+
+			</div>
+		</div>
+		
 	
 	</div>
 
