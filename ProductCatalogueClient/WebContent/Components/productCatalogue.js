@@ -100,6 +100,22 @@ $(document).on("click", "#update_btn", function(event)
 });
 
 
+$(document).on("click", ".Delete_BTN", function(event)
+{
+	$.ajax(
+	{
+		url : "ProductAPI",
+		type : "DELETE",
+		data : "del_pr_id=" + $(this).data("productid"),
+		dataType : "text",
+		complete : function(response, status)
+			{
+				onProductDeleteComplete(response.responseText, status);
+			}
+	});
+});
+
+
 
 //validations
 
@@ -168,11 +184,11 @@ if (status == "success")
 	}
  	} else if (status == "error")
  	{
- 		$("#alertError").text("Error while saving.");
+ 		$("#alertError").text("Error! Insert or Update Operation Failed.");
  		$("#alertError").show();
  	} else
  	{
- 		$("#alertError").text("Unknown error while saving..");
+ 		$("#alertError").text("Unknown error! Insert or Update Operation Failed.");
  		$("#alertError").show();
  	} 
 	//$("#hiddenProductID").val("");
@@ -192,4 +208,31 @@ function getProductCard(code, name, category, sellerId, country, description, pr
 	prod += "<input type=\"button\" value=\"Remove\" class=\"btn btn-danger remove\">";
 	prod += "</div>";
  	return prod;
+}
+
+function onProductDeleteComplete(response, status)
+{
+	if (status == "success")
+	{
+		var resultSet = JSON.parse(response);
+		
+		if (resultSet.status.trim() == "success")
+		{
+			$("#up_alertSuccess").text("Successfully deleted.");
+			$("#up_alertSuccess").show();
+			$("#divItemsGrid").html(resultSet.data);
+		} else if (resultSet.status.trim() == "error")
+		{
+			$("#up_alertError").text(resultSet.data);
+			$("#up_alertError").show();
+		}
+	} else if (status == "error")
+	{
+		$("#up_alertError").text("Error! delete operation failed.");
+		$("#up_alertError").show();
+	} else
+	{
+		$("#up_alertError").text("Unknown error! delete operation failed.");
+		$("#up_alertError").show();
+	}
 }

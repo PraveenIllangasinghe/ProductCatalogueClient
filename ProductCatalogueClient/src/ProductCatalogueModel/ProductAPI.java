@@ -74,7 +74,12 @@ public class ProductAPI extends HttpServlet {
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		Product prodDel = new Product();
+		
+		Map paras = getParasMap(request);
+		 String output = prodDel.deleteProduct(paras.get("del_pr_id").toString());
+		response.getWriter().write(output); 
 	}
 	
 	
