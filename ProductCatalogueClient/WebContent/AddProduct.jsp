@@ -96,7 +96,7 @@
 		<br>
 
 		<div class="row">
-			<div class="col-12" id="colStudents">
+			<div class="col-12" id="colProds">
 
 			</div>
 		</div>

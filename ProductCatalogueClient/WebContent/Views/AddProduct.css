@@ -119,3 +119,11 @@ body{
 	position: absolute;
 	left: 82%;
 }
+
+.card-body{
+	color: #000;
+}
+
+.product{
+	color: #000;
+}

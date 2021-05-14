@@ -37,7 +37,7 @@ $(document).on("click", "#add_btn", function(event)
 		dataType: "text",
 		complete: function(response, status)
 		{
-			onItemSaveComplete(response.responseText, status);
+			onProdInsertComplete(response.responseText, status);
 		}
 	});
 	//***************************************************************************************************************
@@ -51,7 +51,7 @@ $(document).on("click", "#add_btn", function(event)
 			$("#pr_origin_country").val().trim(),
 			$("#pr_description").val().trim(),
 			$("#pr_price").val().trim());
-	 		$("#colStudents").append(pr);
+	 		$("#colProds").append(pr);
 
 	 $("#alertSuccess").text("Saved successfully.");
 	 $("#alertSuccess").show();
@@ -84,14 +84,14 @@ $(document).on("click", "#update_btn", function(event)
 	$("#up_alertError").text("");
 	$("#up_alertError").hide();
 			
-	/*var status = validateInfo();
+	var status = UpdvalidateInfo();
 			
 	if (status != true)
 	{
 		$("#up_alertError").text(status);
 		$("#up_alertError").show();
 		return;
-	}*/
+	}
 			
 			
 	$.ajax(
@@ -102,9 +102,11 @@ $(document).on("click", "#update_btn", function(event)
 		dataType: "text",
 		complete: function(response, status)
 			{
-				onItemSaveComplete(response.responseText, status);
+				onProdInsertComplete(response.responseText, status);
 			}
 	});
+	
+	$("#updateProductForm")[0].reset();
 });
 
 //************************************************************************************
@@ -176,7 +178,7 @@ function validateInfo()
 }
 
 //To process the returned JSON object
-function onItemSaveComplete(response, status)
+function onProdInsertComplete(response, status)
 {
 if (status == "success")
 {
@@ -200,8 +202,8 @@ if (status == "success")
  		$("#alertError").text("Unknown error! Insert or Update Operation Failed.");
  		$("#alertError").show();
  	} 
-	//$("#hiddenProductID").val("");
-	//$("#addNewProductForm")[0].reset();
+	$("#hiddenProductID").val("");
+	$("#addNewProductForm")[0].reset();
 	}
 
 //Create the Card Structure for Recently added Products
@@ -211,11 +213,10 @@ function getProductCard(code, name, category, sellerId, country, description, pr
 	var prod = "";
 	prod += "<div class=\"product card bg-light m-2\" style=\"max-width: 10rem; float: left;\">";
 	prod += "<div class=\"card-body\">";
-	prod += code + " " + name + ",";
+	prod += code + " " + name;
 	prod += "<br>";
-	prod += price + " .00";
+	prod += price;
 	prod += "</div>";
-	prod += "<input type=\"button\" value=\"Remove\" class=\"btn btn-danger remove\">";
 	prod += "</div>";
  	return prod;
 }
@@ -247,4 +248,53 @@ function onProductDeleteComplete(response, status)
 		$("#up_alertError").text("Unknown error! delete operation failed.");
 		$("#up_alertError").show();
 	}
+}
+
+//validations for the fields to check if null
+
+function UpdvalidateInfo()
+{
+	//Product Code
+	if ($("#up_pr_code").val().trim() == "")
+		{
+			return "Please enter the Code.";
+		}
+	
+	//Product Name
+	if ($("#up_pr_name").val().trim() == "")
+		{
+			return "Please enter the Product Name.";
+		}
+	
+	//Product Category
+	if ($("#up_pr_category").val().trim() == "")
+		{
+			return "Please enter the Category.";
+		}
+	
+	//Seller ID
+	if ($("#up_pr_seller_id").val().trim() == "")
+		{
+			return "Please enter the Seller ID.";
+		}
+	
+	//Origin Country
+	if ($("#up_pr_origin_country").val().trim() == "")
+		{
+			return "Please enter the Country of Origin.";
+		}
+	
+	//Product Description
+	if ($("#up_pr_description").val().trim() == "")
+		{
+			return "Please enter a Description.";
+		}
+	
+	//Product Price
+	if ($("#up_pr_price").val().trim() == "")
+		{
+			return "Please enter the Price.";
+		}
+	
+	return true;
 }
