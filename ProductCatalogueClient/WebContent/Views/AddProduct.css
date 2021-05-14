@@ -1,0 +1,121 @@
+@charset "ISO-8859-1";
+
+body{
+	background: url("images/backImg.jpg");
+	background-position: center;
+	background-repeat:no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	color: black;
+	font-family:Verdana;
+}
+
+.container{
+	width: 800px;
+	background-color: rgba(0,0,0,.3);
+	color: #fff;
+	top: 65%;
+	left: 50%;
+	margin-top: 5%;
+	margin-left: 20%;
+	box-sizing: border-box;
+	padding: 5px 5px;
+	border-radius: 20px;
+}
+
+.container input[type="text"]
+{
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+	width: 50%;
+	margin-bottom: 20px;
+}
+
+#heading {
+	margin-top: 3%;
+	font-family: 'Krona One', sans-serif;
+	color: white;
+}
+
+#partTwo {
+	color: #25fa90;
+}
+
+#pr_code_label{
+	background: transparent;
+	color: #fff;
+	border: none;
+	font-family:Verdana;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#pr_name_label{
+	background: transparent;
+	color: #fff;
+	border: none;
+	font-family:Verdana;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#pr_category_label{
+	background: transparent;
+	color: #fff;
+	border: none;
+	font-family:Verdana;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#pr_seller_id_label{
+	background: transparent;
+	color: #fff;
+	border: none;
+	font-family:Verdana;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#pr_origin_country_label{
+	background: transparent;
+	color: #fff;
+	border: none;
+	font-family:Verdana;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#pr_description_label{
+	background: transparent;
+	color: #fff;
+	border: none;
+	font-family:Verdana;
+	font-weight: bold;
+	font-size: 15px;
+}
+#pr_price_label{
+	background: transparent;
+	color: #fff;
+	border: none;
+	font-family:Verdana;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#divItemsGrid{
+	margin-left: -15%;
+	margin-top: 10%;
+}
+#NavBtn{
+	background: transparent;
+	color: white;
+	height: 40px;
+	position: absolute;
+	left: 82%;
+}

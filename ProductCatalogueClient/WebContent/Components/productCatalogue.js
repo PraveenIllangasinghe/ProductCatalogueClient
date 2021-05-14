@@ -2,12 +2,16 @@
  * 
  */
 
+//Hide the alerts when page loads
 $(document).ready(function()
 {
 	$("#alertSuccess").hide();
 	$("#alertError").hide();
+	$("#up_alertSuccess").hide();
+	$("#up_alertError").hide();
 });
 
+//Click action for Add button
 $(document).on("click", "#add_btn", function(event)
 {
 	$("#alertSuccess").text("");
@@ -36,10 +40,10 @@ $(document).on("click", "#add_btn", function(event)
 			onItemSaveComplete(response.responseText, status);
 		}
 	});
+	//***************************************************************************************************************
 	
+	//Temp Card View of Recently Added Products. To View the Full Catalogue click the 'View Product Catalogue' button
 	
-	// If valid-----------------------
-	 // Generate the card and append
 	var pr = getProductCard($("#pr_code").val().trim(),
 			$("#pr_name").val().trim(),
 			$("#pr_category").val().trim(),
@@ -55,7 +59,9 @@ $(document).on("click", "#add_btn", function(event)
 	 $("#addNewProductForm")[0].reset();
 });
 
+	//***************************************************************************************************************
 
+//Click action for Select button in the table
 $(document).on("click", ".Select_BTN", function(event)
 {
 	$("#hiddenProductID").val($(this).data("productid"));
@@ -68,7 +74,9 @@ $(document).on("click", ".Select_BTN", function(event)
 	$("#up_pr_price").val($(this).closest("tr").find('td:eq(6)').text());
 });
 
+//************************************************************************************
 
+//Click action for Update button
 $(document).on("click", "#update_btn", function(event)
 {
 	$("#up_alertSuccess").text("");
@@ -99,6 +107,7 @@ $(document).on("click", "#update_btn", function(event)
 	});
 });
 
+//************************************************************************************
 
 $(document).on("click", ".Delete_BTN", function(event)
 {
@@ -117,7 +126,7 @@ $(document).on("click", ".Delete_BTN", function(event)
 
 
 
-//validations
+//validations for the fields to check if null
 
 function validateInfo()
 {
@@ -166,7 +175,7 @@ function validateInfo()
 	return true;
 }
 
-
+//To process the returned JSON object
 function onItemSaveComplete(response, status)
 {
 if (status == "success")
@@ -195,6 +204,7 @@ if (status == "success")
 	//$("#addNewProductForm")[0].reset();
 	}
 
+//Create the Card Structure for Recently added Products
 function getProductCard(code, name, category, sellerId, country, description, price)
 {
 	
@@ -209,7 +219,9 @@ function getProductCard(code, name, category, sellerId, country, description, pr
 	prod += "</div>";
  	return prod;
 }
+//*********************************************************************************
 
+//To handle the JSON object for Delete operation
 function onProductDeleteComplete(response, status)
 {
 	if (status == "success")

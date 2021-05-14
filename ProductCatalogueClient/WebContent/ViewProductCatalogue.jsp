@@ -7,12 +7,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View Product Catalogue</title>
 <link rel="stylesheet" href="Views/bootstrap.min.css">
+<link rel="stylesheet" href="Views/AddProduct.css">
 <script src="Components/jquery-3.6.0.min.js"></script>
 <script src="Components/productCatalogue.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
 </head>
 <body>
 
+	<form action="AddProduct.jsp" method="POST">
+		<input type="submit" value="Add Product" id="NavBtn">
+	</form>
 
+	<center>
+	<h1 id="heading"><span id="partOne">Gadget</span> <span id="partTwo">Badget.</span></h1>
+	</center>
+
+	<center>
 	<div class="container">
 	
 		<div class="row">
@@ -96,6 +106,6 @@
 	
 	</div>
 
-
+	</center>
 </body>
 </html>
